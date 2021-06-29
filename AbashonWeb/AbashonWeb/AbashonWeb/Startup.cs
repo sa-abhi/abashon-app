@@ -1,8 +1,13 @@
 using AbashonWeb.Domain.Settings;
 using AbashonWeb.Infrastructure.Extension;
+using AbashonWeb.Infrastructure.PipelineBehaviours;
+using AbashonWeb.Infrastructure.Validators;
 using AbashonWeb.Persistence;
 using AbashonWeb.Service;
+using AbashonWeb.Service.Features.ClientFeatures.Commands;
+using FluentValidation;
 using HealthChecks.UI.Client;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
@@ -16,6 +21,7 @@ using Microsoft.FeatureManagement;
 using Serilog;
 using System;
 using System.IO;
+using System.Reflection;
 
 namespace AbashonWeb
 {
@@ -46,7 +52,7 @@ namespace AbashonWeb
 
             services.AddIdentityService(Configuration);
 
-            services.AddAutoMapper();
+            //services.AddAutoMapper();
 
             services.AddScopedServices();
 
@@ -62,7 +68,14 @@ namespace AbashonWeb
 
             services.AddHealthCheck(AppSettings, Configuration);
 
-            services.AddFeatureManagement();
+            services.AddFeatureManagement();           
+
+            services.AddValidatorsFromAssembly(typeof(CreateClientCommandValidator).Assembly);           
+
+            //AssemblyScanner.FindValidatorsInAssembly(typeof(CreateClientCommandValidator).Assembly)
+            //                .ForEach(item => services.AddScoped(item.InterfaceType, item.ValidatorType));
+
+            
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory log)
@@ -89,7 +102,9 @@ namespace AbashonWeb
             app.UseAuthentication();
 
             app.UseAuthorization();
+
             app.ConfigureSwagger();
+
             app.UseHealthChecks("/healthz", new HealthCheckOptions
             {
                 Predicate = _ => true,

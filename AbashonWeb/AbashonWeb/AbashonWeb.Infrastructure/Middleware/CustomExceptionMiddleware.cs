@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -32,13 +33,26 @@ namespace AbashonWeb.Infrastructure.Middleware
 
         private static Task HandleExceptionAsync(HttpContext context, Exception ex, ILogger<CustomExceptionMiddleware> logger)
         {
-            var code = HttpStatusCode.InternalServerError; // 500 if unexpected
+            var response = context.Response;
 
+            switch (ex)
+            {
+                case BadHttpRequestException appException:
+                    response.StatusCode = (int)HttpStatusCode.BadRequest;
+                    break;
+                case KeyNotFoundException notFoundException:
+                    response.StatusCode = (int)HttpStatusCode.NotFound;
+                    break;
+                default:
+                    response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    break;
+            }
+                    
             logger.LogError(ex.Message);
 
-            var result = JsonConvert.SerializeObject(new { StatusCode = (int)code, ErrorMessage = ex.Message });
+            var result = JsonConvert.SerializeObject(new { StatusCode = response.StatusCode, ErrorMessage = ex.Message });
             context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)code;
+            context.Response.StatusCode = response.StatusCode;
             return context.Response.WriteAsync(result);
         }
     }
