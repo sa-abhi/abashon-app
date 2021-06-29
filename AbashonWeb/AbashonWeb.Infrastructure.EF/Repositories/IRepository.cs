@@ -12,11 +12,13 @@ namespace AbashonWeb.Infrastructure.EF.Repositories
          where TEntity : BaseEntity
          where TContext : DbContext
     {
-        void Add(TEntity entity);
-        void Remove(int id);
-        void Remove(TEntity entityToDelete);
+        //void Add(TEntity entity);
+        Task AddAsync(TEntity entity);
+        //void Remove(int id);
+        Task RemoveAsync(int id);
+        void Remove(TEntity entityToDelete);        
         void Edit(TEntity entityToUpdate);
-        Task<IList<TEntity>> GetAll();
-        Task<TEntity> GetById(int id);
+        Task<IList<TEntity>> GetAllAsync();
+        Task<TEntity> GetByIdAsync(int id);
     }
 }

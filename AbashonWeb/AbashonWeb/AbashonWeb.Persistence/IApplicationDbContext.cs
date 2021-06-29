@@ -6,13 +6,8 @@ namespace AbashonWeb.Persistence
 {
     public interface IApplicationDbContext
     {
-        //DbSet<Category> Categories { get; set; }
-        //DbSet<Customer> Customers { get; set; }
         DbSet<Client> Clients { get; set; }
-        //DbSet<Order> Orders { get; set; }
-        //DbSet<Product> Products { get; set; }
-        //DbSet<Supplier> Suppliers { get; set; }
-
+        public DbSet<ErrorLog> Errors { get; set; }
         Task<int> SaveChangesAsync();
     }
 }

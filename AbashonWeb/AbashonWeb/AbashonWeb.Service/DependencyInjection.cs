@@ -32,6 +32,8 @@ namespace AbashonWeb.Service
             services.AddTransient<IEmailService, MailService>();
             services.AddScoped<IClientUnitOfWork, ClientUnitOfWork>();
             services.AddScoped<IClientRepository, ClientRepository>();
+            services.AddScoped<IErrorLogUnitOfWork, ErrorLogUnitOfWork>();
+            services.AddScoped<IErrorLogRepository, ErrorLogRepository>();
         }
 
         public static void AddIdentityService(this IServiceCollection services, IConfiguration configuration)
