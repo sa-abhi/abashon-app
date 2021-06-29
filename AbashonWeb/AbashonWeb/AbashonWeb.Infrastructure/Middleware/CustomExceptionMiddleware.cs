@@ -42,6 +42,7 @@ namespace AbashonWeb.Infrastructure.Middleware
                     break;
                 case KeyNotFoundException notFoundException:
                     response.StatusCode = (int)HttpStatusCode.NotFound;
+                    
                     break;
                 default:
                     response.StatusCode = (int)HttpStatusCode.InternalServerError;
