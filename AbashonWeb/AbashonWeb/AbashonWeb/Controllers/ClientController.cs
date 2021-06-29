@@ -18,7 +18,7 @@ namespace AbashonWeb.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateClientCommand command)
         {
-            return Ok(await Mediator.Send(command));
+            return Ok(await Mediator.Send(command));            
         }
 
         //[HttpGet]

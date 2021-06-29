@@ -1,9 +1,11 @@
 ﻿using AbashonWeb.Domain.Settings;
 using AbashonWeb.Infrastructure.Mapping;
+using AbashonWeb.Infrastructure.PipelineBehaviours;
 using AbashonWeb.Persistence;
 using AbashonWeb.Service.Contract;
 using AbashonWeb.Service.Implementation;
 using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -31,22 +33,23 @@ namespace AbashonWeb.Infrastructure.Extension
                    options.UseSqlServer(configuration.GetConnectionString("AbashonDbConn") ?? configRoot["ConnectionStrings:AbashonDbConn"]
                 , b => b.MigrationsAssembly(typeof(IdentityContext).Assembly.FullName)));
         }
-        public static void AddAutoMapper(this IServiceCollection serviceCollection)
-        {
-            var mappingConfig = new MapperConfiguration(mc =>
-            {
-                mc.AddProfile(new CustomerProfile());
-            });
-            IMapper mapper = mappingConfig.CreateMapper();
-            serviceCollection.AddSingleton(mapper);
-        }
+
+        //public static void AddAutoMapper(this IServiceCollection serviceCollection)
+        //{
+        //    var mappingConfig = new MapperConfiguration(mc =>
+        //    {
+        //        mc.AddProfile(new CustomerProfile());
+        //    });
+        //    IMapper mapper = mappingConfig.CreateMapper();
+        //    serviceCollection.AddSingleton(mapper);
+        //}
 
         public static void AddScopedServices(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
-
-
+            serviceCollection.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
         }
+
         public static void AddTransientServices(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddTransient<IDateTimeService, DateTimeService>();

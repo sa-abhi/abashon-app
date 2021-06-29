@@ -8,26 +8,12 @@ using System.Threading.Tasks;
 namespace AbashonWeb.Domain.Entities
 {
     public class Client : BaseEntity
-    {
-        [Required]
-        [StringLength(10)]
-        public string ClientIdentificatinNumber { get; set; }
-
-        [Required]
-        [MinLength(2)]
-        public string ClientFirstName { get; set; }
-
-        [Required]
-        [MinLength(2)]
+    {        
+        public string ClientIdentificatinNumber { get; set; }       
+        public string ClientFirstName { get; set; }     
         public string ClientLastName { get; set; }
         public string Email { get; set; }
-
-        [Required]
-        [MinLength(11), MaxLength(11)]
-        public string ContactNo { get; set; }
-
-        [Required]
-        [MaxLength(300)]
+        public string ContactNo { get; set; }        
         public string Address { get; set; }
         public bool IsActive { get; set; }
     }
