@@ -3,7 +3,7 @@ using AbashonWeb.Service.Contract;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace AbashonWeb.Controllers
+namespace AbashonWeb.Controllers.V1
 {
     [ApiController]
     [Route("api/v{version:apiVersion}/Mail")]
