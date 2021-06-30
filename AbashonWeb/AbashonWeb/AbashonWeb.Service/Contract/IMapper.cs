@@ -9,6 +9,8 @@ namespace AbashonWeb.Service.Contract
     public interface IMapper<TSource, TDestination> where TSource : class
                                                     where TDestination : class
     {
-        TDestination MapObjects(TSource source, TDestination destination);
+        Task<TDestination> MapObjectsAsync(TSource source, TDestination destination);
+
+        Task<IEnumerable<TDestination>> MapObjectListAsync(IEnumerable<TSource> source, IEnumerable<TDestination> destination);
     }
 }

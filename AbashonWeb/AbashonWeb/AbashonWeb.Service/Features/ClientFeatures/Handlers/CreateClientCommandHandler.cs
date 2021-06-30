@@ -41,7 +41,7 @@ namespace AbashonWeb.Service.Features.ClientFeatures.Handlers
                 request.CreatedOn = _dateTimeService.NowUtc;
                 request.CreatedBy = "Abhi";
 
-                var model = _mapper.MapObjects(request, client);
+                var model = await _mapper.MapObjectsAsync(request, client);
                
                 await _clientUnitOfWork.ClientRepository.AddAsync(model);
                 await _clientUnitOfWork.Complete();

@@ -1,4 +1,5 @@
 ﻿using AbashonWeb.Service.Features.ClientFeatures.Commands;
+using AbashonWeb.Service.Features.ClientFeatures.Queries;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,12 +22,12 @@ namespace AbashonWeb.Controllers.V1
             return Ok(await Mediator.Send(command));            
         }
 
-        //[HttpGet]
-        //[Route("")]
-        //public async Task<IActionResult> GetAll()
-        //{
-        //    return Ok(await Mediator.Send(new GetAllCustomerQuery()));
-        //}
+        [HttpGet]
+        [Route("")]
+        public async Task<IActionResult> GetAll()
+        {
+            return Ok(await Mediator.Send(new GetAllClientQuery()));
+        }
 
         //[HttpGet("{id}")]
         //public async Task<IActionResult> GetById(int id)

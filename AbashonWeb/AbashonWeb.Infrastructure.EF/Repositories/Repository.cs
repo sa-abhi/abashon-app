@@ -28,15 +28,7 @@ namespace AbashonWeb.Infrastructure.EF.Repositories
 
         public virtual async Task AddAsync(TEntity entity)
         {
-            try
-            {
-                await _dbSet.AddAsync(entity);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            
+            await _dbSet.AddAsync(entity);
         }
 
         //public virtual void Remove(int id)
@@ -47,72 +39,36 @@ namespace AbashonWeb.Infrastructure.EF.Repositories
 
         public virtual async Task RemoveAsync(int id)
         {
-            try
-            {
-                var entityToDelete = await _dbSet.FindAsync(id);
-                Remove(entityToDelete);
-            }
-            catch (Exception)
-            {
-                throw;
-            }            
+            var entityToDelete = await _dbSet.FindAsync(id);
+            Remove(entityToDelete);                      
         }
 
         public virtual void Remove(TEntity entityToDelete)
         {
-            try
+            if (_dbContext.Entry(entityToDelete).State == EntityState.Detached)
             {
-                if (_dbContext.Entry(entityToDelete).State == EntityState.Detached)
-                {
-                    _dbSet.Attach(entityToDelete);
-                }
-                _dbSet.Remove(entityToDelete);
+                _dbSet.Attach(entityToDelete);
             }
-            catch (Exception)
-            {
-                throw;
-            }            
+            _dbSet.Remove(entityToDelete);                   
         }
 
         public virtual void Edit(TEntity entityToUpdate)
         {
-            try
-            {
-                _dbSet.Attach(entityToUpdate);
-                _dbContext.Entry(entityToUpdate).State = EntityState.Modified;
-            }
-            catch (Exception)
-            {
-                throw;
-            }           
+            _dbSet.Attach(entityToUpdate);
+            _dbContext.Entry(entityToUpdate).State = EntityState.Modified;                    
         }
 
         public virtual async Task<IList<TEntity>> GetAllAsync()
-        {
-            try
-            {
-                IQueryable<TEntity> query = _dbSet;
-                var list = await query.ToListAsync();
-                return list;
-            }
-            catch (Exception)
-            {
-                throw;
-            }           
+        {            
+            IQueryable<TEntity> query = _dbSet;
+            var list = await query.ToListAsync();
+            return list;                    
         }
 
         public virtual async Task<TEntity> GetByIdAsync(int id)
         {
-            try
-            {
-                var enitity = await _dbSet.FindAsync(id);
-                return enitity;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-           
+            var enitity = await _dbSet.FindAsync(id);
+            return enitity; 
         }
     }
 }
