@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AbashonWeb.Controllers
+namespace AbashonWeb.Controllers.V1
 {
     //[Authorize]
     [Route("api/v{version:apiVersion}/Client")]
