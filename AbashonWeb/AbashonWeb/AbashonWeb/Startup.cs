@@ -70,12 +70,12 @@ namespace AbashonWeb
 
             services.AddFeatureManagement();           
 
-            services.AddValidatorsFromAssembly(typeof(CreateClientCommandValidator).Assembly);           
+            services.AddValidatorsFromAssembly(typeof(CreateClientCommandValidator).Assembly);
 
             //AssemblyScanner.FindValidatorsInAssembly(typeof(CreateClientCommandValidator).Assembly)
             //                .ForEach(item => services.AddScoped(item.InterfaceType, item.ValidatorType));
 
-            
+            services.AddMemoryCache();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory log)

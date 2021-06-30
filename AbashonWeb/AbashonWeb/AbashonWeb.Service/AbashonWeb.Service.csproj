@@ -24,8 +24,4 @@
     <ProjectReference Include="..\AbashonWeb.Persistence\AbashonWeb.Persistence.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\ClientFeatures\Queries\" />
-  </ItemGroup>
-
 </Project>

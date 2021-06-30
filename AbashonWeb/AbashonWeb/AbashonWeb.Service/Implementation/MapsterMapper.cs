@@ -12,11 +12,17 @@ namespace AbashonWeb.Service.Implementation
                                                         where TSource : class
                                                         where TDestination : class
     {
-        public TDestination MapObjects(TSource source, TDestination destination)
+        public async Task<TDestination> MapObjectsAsync(TSource source, TDestination destination)
         {
-            var result =  source.Adapt(destination);
+            var result =  Task.FromResult(source.Adapt(destination));
 
-            return result;
+            return await result;
+        }
+
+        public async Task<IEnumerable<TDestination>> MapObjectListAsync(IEnumerable<TSource> source, IEnumerable<TDestination> destination)
+        {
+            var result = Task.FromResult(source.Adapt(destination).ToList());
+            return await result;
         }
     }
 }
