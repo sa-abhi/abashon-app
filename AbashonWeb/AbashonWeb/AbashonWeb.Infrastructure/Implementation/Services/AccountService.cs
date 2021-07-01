@@ -3,6 +3,7 @@ using AbashonWeb.Domain.Common;
 using AbashonWeb.Domain.Enum;
 using AbashonWeb.Domain.Settings;
 using AbashonWeb.Service.Contract;
+using AbashonWeb.Service.Contract.Services;
 using AbashonWeb.Service.Exceptions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
@@ -18,7 +19,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbashonWeb.Service.Implementation
+namespace AbashonWeb.Infrastructure.Implementation.Services
 {
     public class AccountService : IAccountService
     {

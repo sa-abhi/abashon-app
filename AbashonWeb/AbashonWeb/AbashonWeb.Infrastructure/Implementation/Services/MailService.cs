@@ -1,5 +1,5 @@
 ﻿using AbashonWeb.Domain.Settings;
-using AbashonWeb.Service.Contract;
+using AbashonWeb.Service.Contract.Services;
 using AbashonWeb.Service.Exceptions;
 using MailKit.Net.Smtp;
 using MailKit.Security;
@@ -8,7 +8,7 @@ using Microsoft.Extensions.Options;
 using MimeKit;
 using System.Threading.Tasks;
 
-namespace AbashonWeb.Service.Implementation
+namespace AbashonWeb.Infrastructure.Implementation.Services
 {
     public class MailService : IEmailService
     {

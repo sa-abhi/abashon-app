@@ -1,5 +1,6 @@
 ﻿using AbashonWeb.Domain.Settings;
 using AbashonWeb.Service.Contract;
+using AbashonWeb.Service.Contract.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

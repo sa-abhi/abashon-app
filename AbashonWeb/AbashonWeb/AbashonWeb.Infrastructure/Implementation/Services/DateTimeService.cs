@@ -1,7 +1,7 @@
-﻿using AbashonWeb.Service.Contract;
+﻿using AbashonWeb.Service.Contract.Services;
 using System;
 
-namespace AbashonWeb.Service.Implementation
+namespace AbashonWeb.Infrastructure.Implementation.Services
 {
     public class DateTimeService : IDateTimeService
     {

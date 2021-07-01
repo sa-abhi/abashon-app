@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AbashonWeb.Service.Contract.UnitOfWorks;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbashonWeb.Infrastructure.EF.UnitOfWorks
+namespace AbashonWeb.Infrastructure.Implementation.UOW
 {
     public class UnitOfWork : IUnitOfWork
     {

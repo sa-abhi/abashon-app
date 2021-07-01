@@ -1,14 +1,8 @@
-﻿using AbashonWeb.Infrastructure.EF.UnitOfWorks;
-using AbashonWeb.Persistence;
+﻿using AbashonWeb.Persistence;
 using AbashonWeb.Service.Contract.Repositories;
 using AbashonWeb.Service.Contract.UnitOfWorks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AbashonWeb.Service.UnitOfWorks
+namespace AbashonWeb.Infrastructure.Implementation.UOW
 {
     public class ClientUnitOfWork : UnitOfWork, IClientUnitOfWork
     {

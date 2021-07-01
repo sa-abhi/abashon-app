@@ -2,7 +2,7 @@
 using AbashonWeb.Domain.Common;
 using System.Threading.Tasks;
 
-namespace AbashonWeb.Service.Contract
+namespace AbashonWeb.Service.Contract.Services
 {
     public interface IAccountService
     {

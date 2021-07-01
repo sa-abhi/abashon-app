@@ -1,10 +1,4 @@
-﻿using AbashonWeb.Infrastructure.EF.UnitOfWorks;
-using AbashonWeb.Service.Contract.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AbashonWeb.Service.Contract.Repositories;
 
 namespace AbashonWeb.Service.Contract.UnitOfWorks
 {

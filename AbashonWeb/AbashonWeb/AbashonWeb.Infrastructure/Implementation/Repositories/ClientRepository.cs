@@ -1,17 +1,13 @@
 ﻿using AbashonWeb.Domain.Entities;
-using AbashonWeb.Infrastructure.EF.Repositories;
 using AbashonWeb.Persistence;
 using AbashonWeb.Service.Contract.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace AbashonWeb.Service.Repositories
+namespace AbashonWeb.Infrastructure.Implementation.Repositories
 {
-    public class ClientRepository : Repository<Client, ApplicationDbContext>, IClientRepository
+    public class ClientRepository : Repository<Client>, IClientRepository
     {
         public ClientRepository(ApplicationDbContext dbContext)
             : base(dbContext)

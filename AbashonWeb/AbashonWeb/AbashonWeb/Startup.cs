@@ -1,4 +1,5 @@
 using AbashonWeb.Domain.Settings;
+using AbashonWeb.Infrastructure;
 using AbashonWeb.Infrastructure.Extension;
 using AbashonWeb.Infrastructure.PipelineBehaviours;
 using AbashonWeb.Infrastructure.Validators;
@@ -56,13 +57,15 @@ namespace AbashonWeb
 
             services.AddScopedServices();
 
-            services.AddTransientServices();
+            //services.AddTransientServices();
 
             services.AddSwaggerOpenAPI();
 
             services.AddMailSetting(Configuration);
 
             services.AddServiceLayer();
+
+            services.AddInfrusturctureLayer();
 
             services.AddVersion();
 

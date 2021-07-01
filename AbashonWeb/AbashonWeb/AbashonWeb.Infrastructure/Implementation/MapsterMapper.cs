@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbashonWeb.Service.Implementation
+namespace AbashonWeb.Infrastructure.Implementation
 {
     public class MapsterMapper<TSource, TDestination> : IMapper<TSource, TDestination>
                                                         where TSource : class
