@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbashonWeb.Infrastructure.EF.UnitOfWorks
+namespace AbashonWeb.Service.Contract.UnitOfWorks
 {
     public interface IUnitOfWork : IDisposable
     {

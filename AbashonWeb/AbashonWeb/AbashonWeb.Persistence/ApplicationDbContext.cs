@@ -1,16 +1,18 @@
 ﻿using AbashonWeb.Domain.Entities;
+using AbashonWeb.Service.Contract;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 
 namespace AbashonWeb.Persistence
 {
-    public class ApplicationDbContext : DbContext, IApplicationDbContext
+    //public class ApplicationDbContext : DbContext, IApplicationDbContext
+    public class ApplicationDbContext : DbContext
     {
         private IConfiguration _configuration;
         public ApplicationDbContext()
         {
-           ;
+           
         }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {

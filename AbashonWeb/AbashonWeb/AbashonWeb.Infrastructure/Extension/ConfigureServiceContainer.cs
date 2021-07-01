@@ -1,10 +1,7 @@
 ﻿using AbashonWeb.Domain.Settings;
-using AbashonWeb.Infrastructure.Mapping;
 using AbashonWeb.Infrastructure.PipelineBehaviours;
 using AbashonWeb.Persistence;
-using AbashonWeb.Service.Contract;
-using AbashonWeb.Service.Implementation;
-using AutoMapper;
+using AbashonWeb.Service.Contract.Services;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,9 +11,6 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
-using System.Reflection;
 
 namespace AbashonWeb.Infrastructure.Extension
 {
@@ -46,15 +40,15 @@ namespace AbashonWeb.Infrastructure.Extension
 
         public static void AddScopedServices(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
+            //serviceCollection.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
             serviceCollection.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
         }
 
-        public static void AddTransientServices(this IServiceCollection serviceCollection)
-        {
-            serviceCollection.AddTransient<IDateTimeService, DateTimeService>();
-            serviceCollection.AddTransient<IAccountService, AccountService>();
-        }
+        //public static void AddTransientServices(this IServiceCollection serviceCollection)
+        //{
+        //    serviceCollection.AddTransient<IDateTimeService, DateTimeService>();
+        //    serviceCollection.AddTransient<IAccountService, AccountService>();
+        //}
 
         public static void AddSwaggerOpenAPI(this IServiceCollection serviceCollection)
         {

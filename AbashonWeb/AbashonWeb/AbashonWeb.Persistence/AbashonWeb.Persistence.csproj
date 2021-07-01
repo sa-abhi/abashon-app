@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AbashonWeb.Domain\AbashonWeb.Domain.csproj" />
+    <ProjectReference Include="..\AbashonWeb.Service\AbashonWeb.Service.csproj" />
   </ItemGroup>
 
 </Project>

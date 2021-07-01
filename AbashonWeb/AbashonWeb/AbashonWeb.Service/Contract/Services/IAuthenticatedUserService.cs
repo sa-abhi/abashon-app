@@ -1,5 +1,5 @@
 ﻿
-namespace AbashonWeb.Service.Contract
+namespace AbashonWeb.Service.Contract.Services
 {
     public interface IAuthenticatedUserService
     {

@@ -20,8 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\AbashonWeb.Infrastructure.EF\AbashonWeb.Infrastructure.EF.csproj" />
-    <ProjectReference Include="..\AbashonWeb.Persistence\AbashonWeb.Persistence.csproj" />
+    <ProjectReference Include="..\AbashonWeb.Domain\AbashonWeb.Domain.csproj" />
   </ItemGroup>
 
 </Project>

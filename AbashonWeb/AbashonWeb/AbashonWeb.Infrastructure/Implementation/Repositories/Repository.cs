@@ -1,4 +1,7 @@
 ﻿using AbashonWeb.Domain;
+using AbashonWeb.Persistence;
+using AbashonWeb.Service.Contract;
+using AbashonWeb.Service.Contract.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,37 +9,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbashonWeb.Infrastructure.EF.Repositories
+namespace AbashonWeb.Infrastructure.Implementation.Repositories
 {
-    public class Repository<TEntity, TContext> : IRepository<TEntity, TContext>
-                                                where TEntity : BaseEntity
-                                                where TContext : DbContext
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
+                                                
     {
-        protected TContext _dbContext;
+        protected readonly ApplicationDbContext _dbContext;
         protected DbSet<TEntity> _dbSet;
 
-        public Repository(TContext context)
+        public Repository(ApplicationDbContext dbContext)
         {
-            _dbContext = context;
+            _dbContext = dbContext;
             _dbSet = _dbContext.Set<TEntity>();
-        }
-
-        //public virtual void Add(TEntity entity)
-        //{
-        //    _dbSet.Add(entity);
-        //}
+        }       
 
         public virtual async Task AddAsync(TEntity entity)
         {
             await _dbSet.AddAsync(entity);
         }
-
-        //public virtual void Remove(int id)
-        //{
-        //    var entityToDelete = _dbSet.Find(id);
-        //    Remove(entityToDelete);
-        //}
-
+        
         public virtual async Task RemoveAsync(int id)
         {
             var entityToDelete = await _dbSet.FindAsync(id);
@@ -49,6 +40,7 @@ namespace AbashonWeb.Infrastructure.EF.Repositories
             {
                 _dbSet.Attach(entityToDelete);
             }
+            
             _dbSet.Remove(entityToDelete);                   
         }
 
