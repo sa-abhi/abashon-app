@@ -3,6 +3,6 @@ A Property Management System.
 
 Architechture - Onion Architecture with CQRS and Repository pattern.
 
-Technology Used - C#, MSSQL
+Technology Used - C#, .NET 5,  MSSQL
 
 
